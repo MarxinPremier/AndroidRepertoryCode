@@ -9,4 +9,6 @@ public interface HasParamsable
 {
     OkHttpRequestBuilder params(Map<String, String> params);
     OkHttpRequestBuilder addParams(String key, String val);
+    OkHttpRequestBuilder paramsForJson(Map<String, Object> params);
+
 }

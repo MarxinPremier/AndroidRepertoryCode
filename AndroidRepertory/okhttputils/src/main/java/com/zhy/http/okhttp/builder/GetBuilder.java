@@ -2,6 +2,7 @@ package com.zhy.http.okhttp.builder;
 
 import android.net.Uri;
 
+import com.google.gson.Gson;
 import com.zhy.http.okhttp.request.GetRequest;
 import com.zhy.http.okhttp.request.RequestCall;
 
@@ -59,6 +60,16 @@ public class GetBuilder extends OkHttpRequestBuilder<GetBuilder> implements HasP
             params = new LinkedHashMap<>();
         }
         params.put(key, val);
+        return this;
+    }
+
+    @Override
+    public OkHttpRequestBuilder paramsForJson(Map<String, Object> params) {
+        if (this.params == null)
+        {
+            this.params = new LinkedHashMap<>();
+        }
+        this.params.put("json", new Gson().toJson(params));
         return this;
     }
 

@@ -1,5 +1,6 @@
 package com.zhy.http.okhttp.builder;
 
+import com.google.gson.Gson;
 import com.zhy.http.okhttp.request.PostFormRequest;
 import com.zhy.http.okhttp.request.RequestCall;
 
@@ -81,7 +82,13 @@ public class PostFormBuilder extends OkHttpRequestBuilder<PostFormBuilder> imple
         return this;
     }
 
-
-
-
+    @Override
+    public OkHttpRequestBuilder paramsForJson(Map<String, Object> params) {
+        if (this.params == null)
+        {
+            this.params = new LinkedHashMap<>();
+        }
+        this.params.put("json", new Gson().toJson(params));
+        return this;
+    }
 }
