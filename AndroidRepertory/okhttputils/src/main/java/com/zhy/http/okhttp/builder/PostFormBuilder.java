@@ -91,4 +91,14 @@ public class PostFormBuilder extends OkHttpRequestBuilder<PostFormBuilder> imple
         this.params.put("json", new Gson().toJson(params));
         return this;
     }
+
+    @Override
+    public OkHttpRequestBuilder addParamsForJson(String key, String val) {
+        if (this.params == null)
+        {
+            params = new LinkedHashMap<>();
+        }
+        params.put("json", "{'"+key+"':'"+val+"'}");
+        return this;
+    }
 }

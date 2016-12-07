@@ -73,5 +73,15 @@ public class GetBuilder extends OkHttpRequestBuilder<GetBuilder> implements HasP
         return this;
     }
 
+    @Override
+    public OkHttpRequestBuilder addParamsForJson(String key, String val) {
+        if (this.params == null)
+        {
+            params = new LinkedHashMap<>();
+        }
+        params.put("json", "{'"+key+"':'"+val+"'}");
+        return this;
+    }
+
 
 }
